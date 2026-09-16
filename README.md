@@ -1,24 +1,25 @@
 # Lasa Coding Skills
 
-Una raccolta di skill riutilizzabili per AI coding agent. Le skill aiutano a trasformare un'idea in una specifica, una issue implementabile e un'implementazione verificata, mantenendo la tracciabilità fino alla documentazione finale.
+A collection of 10 reusable skills for AI coding agents. The skills help turn an idea into a specification, an implementable issue, and a verified implementation while preserving traceability through to the final documentation.
 
-Le istruzioni sono principalmente in italiano e sono distribuite nel formato `SKILL.md`, compatibile con gli agenti che supportano l'Agent Skills ecosystem.
+The instructions are currently written primarily in Italian and are distributed in the `SKILL.md` format, which is compatible with agents that support the Agent Skills ecosystem. The skills may be translated into English in the future.
 
-## Skill disponibili
+## Available skills
 
-| Skill | Scopo |
+| Skill | Purpose |
 | --- | --- |
-| [`capture-intent`](capture-intent/SKILL.md) | Trasforma appunti e requisiti grezzi in un intent Markdown stabile, senza inventare requisiti. |
-| [`intent-to-spec`](intent-to-spec/SKILL.md) | Trasforma un intent in una specifica di requisiti e progettazione integrabile nella codebase. |
-| [`spec-to-issue`](spec-to-issue/SKILL.md) | Prepara una proposta di issue GitHub a partire da una specifica, preservando requisiti e tracciabilità. |
-| [`implement-issue`](implement-issue/SKILL.md) | Implementa una issue nella codebase esistente applicando un flusso TDD e verificando i criteri di accettazione. |
-| [`review-implementation`](review-implementation/SKILL.md) | Esegue una code review dell'implementazione rispetto a issue, spec, criteri e standard della codebase. |
-| [`branch-to-docs`](branch-to-docs/SKILL.md) | Documenta il risultato di un branch e, dopo conferma, prepara il changelog rispetto a `main`. |
-| [`keep-a-changelog-from-diff`](keep-a-changelog-from-diff/SKILL.md) | Produce o aggiorna changelog in italiano a partire da diff, commit o intervalli di release. |
-| [`validate-traceability`](validate-traceability/SKILL.md) | Controlla la coerenza della catena intent → spec → issue → implementazione → documentazione. |
-| [`close-issue`](close-issue/SKILL.md) | Prepara un Conventional Commit aggregato e i commenti di chiusura delle issue, senza eseguire operazioni remote. |
+| [`capture-intent`](skills/capture-intent/SKILL.md) | Turns rough notes and requirements into a stable Markdown intent without inventing requirements. |
+| [`intent-to-spec`](skills/intent-to-spec/SKILL.md) | Turns an intent into a requirements and design specification that can be integrated into the codebase. |
+| [`spec-to-issue`](skills/spec-to-issue/SKILL.md) | Prepares a GitHub issue proposal from a specification while preserving requirements and traceability. |
+| [`implement-issue`](skills/implement-issue/SKILL.md) | Implements an issue in the existing codebase using a TDD workflow and verifies the acceptance criteria. |
+| [`review-implementation`](skills/review-implementation/SKILL.md) | Reviews an implementation against the issue, specification, criteria, and codebase standards. |
+| [`close-issue`](skills/close-issue/SKILL.md) | Prepares an aggregated Conventional Commit and issue-closing comments without performing remote operations. |
+| [`branch-to-docs`](skills/branch-to-docs/SKILL.md) | Documents the result of a branch and, after confirmation, prepares a changelog compared with `main`. |
+| [`keep-a-changelog-from-diff`](skills/keep-a-changelog-from-diff/SKILL.md) | Produces or updates an Italian changelog from diffs, commits, or release ranges. |
+| [`validate-traceability`](skills/validate-traceability/SKILL.md) | Checks the consistency of the intent → specification → issue → implementation → documentation chain. |
+| [`whats-next`](skills/whats-next/SKILL.md) | Interprets what has already been completed and identifies one next skill, including any prerequisites or blockers. |
 
-## Flusso consigliato
+## Recommended workflow
 
 ```text
 capture-intent
@@ -31,31 +32,33 @@ implement-issue
       ↓
 review-implementation
       ↓
+close-issue
+      ↓
 branch-to-docs
       ↓
 validate-traceability
-      ↓
-close-issue
 ```
 
-Il flusso include alcune attività esterne alle skill: pubblicare manualmente la issue su GitHub, creare il commit dopo l'implementazione e chiudere la issue dopo aver verificato il risultato. Le skill che producono documenti o report dichiarano esplicitamente i propri percorsi e non modificano automaticamente issue, commit o remote.
+`whats-next` is an orientation skill: it can be used at any point in the workflow to identify the next step without automatically executing the suggested skill.
 
-## Prerequisiti e convenzioni
+The workflow includes activities outside the skills themselves: manually publishing the issue on GitHub, creating the commit after implementation, and closing the issue after the result has been reviewed. Skills that produce documents or reports explicitly declare their paths and do not automatically modify issues, commits, or remotes.
 
-- Le skill non richiedono dipendenze runtime: sono istruzioni Markdown.
-- Le skill che consultano issue GitHub richiedono GitHub CLI (`gh`) configurata e autenticata.
-- `review-implementation` e `branch-to-docs` lavorano su un perimetro Git esplicito; alcune verifiche richiedono il branch locale `main`.
-- Il flusso usa convenzioni di percorso come `docs/intents`, `docs/specs`, `docs/issues`, `docs/adr`, `dev/implementation`, `docs/documentation` e `docs/changelog`.
-- Prima di installare o eseguire una skill, verifica sempre le istruzioni del relativo `SKILL.md` e i comandi che l'agente potrebbe eseguire.
+## Prerequisites and conventions
+
+- The skills have no runtime dependencies: they are Markdown instructions.
+- Skills that inspect GitHub issues require GitHub CLI (`gh`) to be configured and authenticated.
+- `review-implementation` and `branch-to-docs` work on an explicit Git scope; some checks require a local `main` branch.
+- The workflow uses path conventions such as `docs/intents`, `docs/specs`, `docs/issues`, `docs/adr`, `dev/implementation`, `docs/documentation`, and `docs/changelog`.
+- Before installing or running a skill, always read the relevant `SKILL.md` and review any commands the agent may execute.
 
 ## Disclaimer
 
-Queste skill sono state create per supportare il flusso di lavoro personale dell'autore. Non rappresentano un processo universale e potrebbero non essere adatte a ogni team, codebase, agente, progetto o contesto organizzativo.
+These skills were created to support the author's personal workflow. They do not represent a universal process and may not be suitable for every team, codebase, agent, project, or organizational context.
 
-Prima di utilizzarle, leggine sempre il contenuto e adattale alle tue convenzioni, ai tuoi strumenti e ai tuoi requisiti di sicurezza. Verifica in particolare i comandi Git/GitHub, i percorsi dei file, le autorizzazioni e i dati che l'agente potrebbe leggere o modificare. L'uso delle skill rimane sotto la responsabilità dell'utente: il risultato prodotto dall'agente deve essere controllato da una persona prima di essere applicato, pubblicato o usato per prendere decisioni.
+Before using them, always read and adapt them to your conventions, tools, and security requirements. Pay particular attention to Git/GitHub commands, file paths, permissions, and the data the agent may read or modify. Use of the skills remains the user's responsibility: an agent's output should be reviewed by a person before it is applied, published, or used to make decisions.
 
-Le skill vengono fornite senza garanzie di correttezza, completezza, aggiornamento o idoneità a uno scopo specifico. Non sostituiscono una code review, una verifica di sicurezza, una consulenza legale o altre valutazioni professionali quando necessarie.
+The skills are provided without guarantees of correctness, completeness, currency, or fitness for a particular purpose. They do not replace code review, security assessment, legal advice, or other professional evaluation where needed.
 
-## Licenza
+## License
 
-Il progetto è distribuito con [BSD Zero Clause License (0BSD)](LICENSE). È una licenza permissiva senza obbligo di conservare attribuzione o testo della licenza nelle redistribuzioni, con esclusione di garanzie e responsabilità.
+This project is distributed under the [BSD Zero Clause License (0BSD)](LICENSE). It is a permissive license with no requirement to retain attribution or the license text in redistributions, while excluding warranties and liability.
