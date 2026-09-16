@@ -1,6 +1,6 @@
 # Lasa Coding Skills
 
-A collection of 10 reusable skills for AI coding agents. The skills help turn an idea into a specification, an implementable issue, and a verified implementation while preserving traceability through to the final documentation.
+A collection of 11 reusable skills for AI coding agents. The skills help turn an idea into a specification, an implementable issue, and a verified implementation while preserving traceability through to the final documentation.
 
 The instructions are currently written primarily in Italian and are distributed in the `SKILL.md` format, which is compatible with agents that support the Agent Skills ecosystem. The skills may be translated into English in the future.
 
@@ -8,6 +8,7 @@ The instructions are currently written primarily in Italian and are distributed 
 
 | Skill | Purpose |
 | --- | --- |
+| [`help-me`](skills/help-me/SKILL.md) | Guides users through the pack workflow and identifies the next skill, input, artifact, and manual handoff. |
 | [`capture-intent`](skills/capture-intent/SKILL.md) | Turns rough notes and requirements into a stable Markdown intent without inventing requirements. |
 | [`intent-to-spec`](skills/intent-to-spec/SKILL.md) | Turns an intent into a requirements and design specification that can be integrated into the codebase. |
 | [`spec-to-issue`](skills/spec-to-issue/SKILL.md) | Prepares a GitHub issue proposal from a specification while preserving requirements and traceability. |
@@ -22,6 +23,8 @@ The instructions are currently written primarily in Italian and are distributed 
 ## Recommended workflow
 
 ```text
+help-me (optional orientation)
+      ↓
 capture-intent
       ↓
 intent-to-spec
