@@ -4,6 +4,10 @@ A collection of 11 reusable skills for AI coding agents. The skills help turn an
 
 The instructions are currently written primarily in Italian and are distributed in the `SKILL.md` format, which is compatible with agents that support the Agent Skills ecosystem. The skills may be translated into English in the future.
 
+## Invocation policy
+
+All skills except `keep-a-changelog-from-diff` are configured to run only when explicitly invoked. In Codex, mention the skill with `$<skill-name>` or select it through `/skills`; these skills are not intended to be chosen implicitly from the prompt. `keep-a-changelog-from-diff` retains the default invocation policy.
+
 ## Available skills
 
 | Skill | Purpose |
