@@ -21,7 +21,7 @@ intent-to-spec → spec
     ↓
 spec-to-issue → proposte di issue Markdown
     ↓
-creazione manuale su GitHub → ID della issue
+creazione manuale su GitHub → ID delle issue
     ↓
 implement-issue → codice, test e recap
     ↓
@@ -87,9 +87,9 @@ $spec-to-issue
 File spec: docs/specs/spec-{specname}.md
 ```
 
-La skill sceglie una sola unità di lavoro autonoma e produce una proposta Markdown, normalmente in `docs/issues/issue-{specname}.md`. Per più issue, mantieni una proposta distinta per ogni unità implementabile e verificabile, con una granularità approvata prima della pubblicazione.
+La skill scompone l'intera spec in una sequenza ordinata di proposte Markdown, una per ogni unità implementabile e verificabile, normalmente in `docs/issues/issue-{specname}-{NN}-{slug}.md`, dove `NN` è l'ordine progressivo. La sequenza deve coprire tutti i requisiti della spec fino al completamento; se la spec è realmente indivisibile può produrre una sola proposta.
 
-Il comportamento predefinito del pack è creare file di proposta, non issue remote: leggi il file, verifica ambito e criteri di accettazione e crea manualmente la issue su GitHub copiandone il contenuto. Conserva l'ID assegnato, per esempio `#123`. Se vuoi che l'agente esegua anche la creazione su GitHub, dichiaralo esplicitamente nel prompt: è un'operazione remota separata e richiede strumenti, autenticazione e autorizzazione adeguati.
+Il comportamento predefinito del pack è creare file di proposta, non issue remote: leggi ogni file nell'ordine indicato, verifica ambito e criteri di accettazione e crea manualmente su GitHub una issue per ciascuna proposta. Conserva l'ID assegnato a ogni issue, per esempio `#123`, e mantieni i collegamenti tra predecessori e successori. Se vuoi che l'agente esegua anche la creazione su GitHub, dichiaralo esplicitamente nel prompt: è un'operazione remota separata e richiede strumenti, autenticazione e autorizzazione adeguati.
 
 Dettagli: [`spec-to-issue`](../spec-to-issue/SKILL.md).
 
@@ -198,7 +198,7 @@ Dettagli: [`branch-to-docs`](../branch-to-docs/SKILL.md).
 
 - Leggi ogni artefatto per intero prima di passare alla skill che lo usa.
 - Rispondi alle domande aperte nel documento che le contiene, così la decisione resta tracciata.
-- Mantieni l'ID GitHub della issue e i percorsi dei recap: sono gli agganci tra progettazione, implementazione e chiusura.
+- Mantieni l'ID GitHub di ogni issue e i percorsi dei recap: sono gli agganci tra progettazione, implementazione e chiusura.
 - Specifica sempre il perimetro della review e quello della documentazione quando il branch o l'intervallo non è univoco.
 - Tratta la pubblicazione, il commit, il commento e la chiusura su GitHub come passaggi manuali, salvo richiesta esplicita e autorizzazione a eseguire operazioni remote.
 - Usa `validate-traceability` quando vuoi controllare che nessun requisito o decisione si sia perso lungo il percorso.

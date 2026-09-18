@@ -1,6 +1,6 @@
 # Lasa Coding Skills
 
-A collection of 11 reusable skills for AI coding agents. The skills help turn an idea into a specification, an implementable issue, and a verified implementation while preserving traceability through to the final documentation.
+A collection of 11 reusable skills for AI coding agents. The skills help turn an idea into a specification, a sequence of implementable issues, and verified implementations while preserving traceability through to the final documentation.
 
 The instructions are currently written primarily in Italian and are distributed in the `SKILL.md` format, which is compatible with agents that support the Agent Skills ecosystem. The skills may be translated into English in the future.
 
@@ -15,7 +15,7 @@ All skills except `keep-a-changelog-from-diff` are configured to run only when e
 | [`help-me`](skills/help-me/SKILL.md) | Guides users through the pack workflow and identifies the next skill, input, artifact, and manual handoff. |
 | [`capture-intent`](skills/capture-intent/SKILL.md) | Turns rough notes and requirements into a stable Markdown intent without inventing requirements. |
 | [`intent-to-spec`](skills/intent-to-spec/SKILL.md) | Turns an intent into a requirements and design specification that can be integrated into the codebase. |
-| [`spec-to-issue`](skills/spec-to-issue/SKILL.md) | Prepares a GitHub issue proposal from a specification while preserving requirements and traceability. |
+| [`spec-to-issue`](skills/spec-to-issue/SKILL.md) | Prepares a complete, ordered set of GitHub issue proposals from a specification while preserving requirements and traceability. |
 | [`implement-issue`](skills/implement-issue/SKILL.md) | Implements an issue in the existing codebase using a TDD workflow and verifies the acceptance criteria. |
 | [`review-implementation`](skills/review-implementation/SKILL.md) | Reviews an implementation against the issue, specification, criteria, and codebase standards. |
 | [`close-issue`](skills/close-issue/SKILL.md) | Prepares an aggregated Conventional Commit and issue-closing comments without performing remote operations. |
@@ -48,7 +48,7 @@ validate-traceability
 
 `whats-next` is an orientation skill: it can be used at any point in the workflow to identify the next step without automatically executing the suggested skill.
 
-The workflow includes activities outside the skills themselves: manually publishing the issue on GitHub, creating the commit after implementation, and closing the issue after the result has been reviewed. Skills that produce documents or reports explicitly declare their paths and do not automatically modify issues, commits, or remotes.
+The workflow includes activities outside the skills themselves: manually publishing each issue proposal on GitHub, creating the commits after implementation, and closing the issues after the results have been reviewed. Skills that produce documents or reports explicitly declare their paths and do not automatically modify issues, commits, or remotes.
 
 ## Prerequisites and conventions
 
@@ -56,6 +56,7 @@ The workflow includes activities outside the skills themselves: manually publish
 - Skills that inspect GitHub issues require GitHub CLI (`gh`) to be configured and authenticated.
 - `review-implementation` and `branch-to-docs` work on an explicit Git scope; some checks require a local `main` branch.
 - The workflow uses path conventions such as `docs/intents`, `docs/specs`, `docs/issues`, `docs/adr`, `dev/implementation`, `docs/documentation`, and `docs/changelog`.
+- `spec-to-issue` writes one ordered proposal per work unit under `docs/issues/issue-{specname}-{NN}-{slug}.md`; each proposal becomes a separate GitHub issue when published manually.
 - Before installing or running a skill, always read the relevant `SKILL.md` and review any commands the agent may execute.
 
 ## Disclaimer

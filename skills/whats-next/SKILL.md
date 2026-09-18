@@ -67,7 +67,7 @@ Interpretare il flusso così:
 |---|---|---|
 | Intent raccolto | `docs/intents/intent-{specname}.md` | `intent-to-spec` |
 | Spec prodotta | `docs/specs/spec-{specname}.md` | `spec-to-issue` |
-| Proposta di issue prodotta | `docs/issues/issue-{specname}.md` e riferimento issue | `implement-issue` |
+| Proposte di issue prodotte | `docs/issues/issue-{specname}-{NN}-{slug}.md` per ogni unità e riferimenti alle issue | Pubblicazione manuale su GitHub, poi `implement-issue` per la prima issue non implementata |
 | Implementazione terminata | codice, test e `dev/implementation/{specname}/{issue}-implementation-recap.md` | `review-implementation` |
 | Review completata | report di review senza blocchi | `close-issue` |
 | Recap e riferimenti di commit disponibili | uno o più implementation recap | `close-issue` |

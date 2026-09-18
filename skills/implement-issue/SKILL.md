@@ -16,7 +16,7 @@ Implementare una issue GitHub nel perimetro della proposta generata da `spec-to-
 ## Quando usarla
 
 - È stato fornito un numero, URL o altro riferimento a una issue GitHub.
-- La issue deriva da `docs/issues/issue-{specname}.md`.
+- La issue deriva da una proposta sequenziale, il cui file locale segue `docs/issues/issue-{specname}-{NN}-{slug}.md` quando è disponibile.
 - Sono richiesti modifiche al codice, test e verifica dei criteri di accettazione.
 
 Non creare, modificare, chiudere o commentare issue GitHub. Non fare commit o push senza richiesta esplicita.
@@ -24,7 +24,7 @@ Non creare, modificare, chiudere o commentare issue GitHub. Non fare commit o pu
 ## Procedura
 
 1. Recuperare la issue con `gh issue view <riferimento> --comments`, applicando subito l'accesso esterno indicato sopra.
-2. Esaminare `git status`, la struttura della codebase e i percorsi coinvolti. Preservare modifiche non correlate e fermarsi se la issue confligge con lavoro locale non proprio.
+2. Esaminare `git status`, la struttura della codebase e i percorsi coinvolti. Se la spec è suddivisa in più issue, mantenere il lavoro limitato alla proposta e alla issue indicate, usando le dipendenze sequenziali solo per il contesto. Preservare modifiche non correlate e fermarsi se la issue confligge con lavoro locale non proprio.
 3. Consultare gli ADR e le regole di dominio pertinenti.
 4. Individuare eventuali nuove decisioni architetturali candidate a un ADR. Se una scelta con impatto durevole riguarda architettura, contratti, dati, sicurezza, integrazioni o pattern trasversali, descrivere contesto, decisione proposta, alternative e conseguenze, chiedere conferma all'utente e attendere prima di adottarla.
 5. Tradurre i criteri di accettazione in comportamenti verificabili e scegliere il primo comportamento minimo da implementare.
@@ -148,7 +148,7 @@ Prima della consegna controllare:
 - Scrivere il codice prima del test o saltare la verifica del fallimento iniziale.
 - Cambiare il test perché il codice non lo soddisfa.
 - Fermarsi al primo test verde senza eseguire la suite pertinente.
-- Implementare la spec completa quando la issue copre una sola unità di lavoro.
+- Implementare la spec completa invece dell'unità assegnata quando la spec è suddivisa in più issue.
 - Ignorare commenti, ADR o vincoli di sicurezza collegati alla issue.
 - Adottare una decisione architetturale nuova senza confermarla con l'utente o senza registrarla in `docs/adr`.
 - Dimenticare di chiedere se la code review contro la issue è desiderata.

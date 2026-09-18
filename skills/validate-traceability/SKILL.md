@@ -50,9 +50,9 @@ docs/intents/intent-{specname}.md
         ↓
 docs/specs/spec-{specname}.md
         ↓
-docs/issues/issue-{specname}.md
+docs/issues/issue-{specname}-{NN}-{slug}.md (una o più issue, in ordine)
         ↓
-dev/implementation/{specname}/{issue}-implementation-recap.md
+dev/implementation/{specname}/{issue}-implementation-recap.md (uno per issue)
         ↓
 docs/documentation/{specname}-docs.md
         ↓
@@ -63,7 +63,7 @@ Controllare anche gli ADR in `docs/adr` citati o implicati dagli artefatti. Se l
 
 ## Procedura
 
-1. Individuare i percorsi attesi e verificare l'esistenza dei file. Non creare i file mancanti e non considerare valido un riferimento basato soltanto sul nome.
+1. Individuare i percorsi attesi e verificare l'esistenza dei file. Per una spec suddivisa in più issue, enumerare tutti i file `docs/issues/issue-{specname}-{NN}-{slug}.md` e i recap associati, mantenendo l'ordine `NN`. Non creare i file mancanti e non considerare valido un riferimento basato soltanto sul nome.
 2. Leggere per intero gli artefatti esistenti. Consultare la documentazione secondo la priorità `docs/00-official/` → `docs/01-inbox-updates/` → `docs/02-working-notes/` → `docs/04-reference/` → `docs/05-drafts/`; non usare `docs/03-history/` come baseline.
 3. Verificare i collegamenti espliciti: fonte dell'intent nella spec, fonte della spec nell'issue, issue e spec nei recap, perimetro Git nella documentazione e confronto con `main` nel changelog.
 4. Estrarre i requisiti funzionali e non funzionali dall'intent e dalla spec. Per ciascuno cercare una copertura nell'issue, nei criteri di accettazione, nel recap e nella documentazione dell'implementazione.
